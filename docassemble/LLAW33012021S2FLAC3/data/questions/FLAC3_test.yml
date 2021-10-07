@@ -1,0 +1,143 @@
+---
+objects:
+  - FLAClogo: DAStaticFile.using(filename='FLAC3.png')
+---
+mandatory: True
+code: |
+  set_parts(logo='<img src="' + FLAClogo.url_for() + '" style="height: 55px;">')
+---
+features:
+  css: FLAC3.css
+  debug: False
+  hide standard menu: True
+---
+default screen parts:
+  post: |
+    <div style="display: flex; height: 200px; align-items: flex-end; flex-direction: row-reverse">
+    <div style="margin: 5px"><img src="https://staff.flinders.edu.au/etc.clientlibs/flinders/clientlibs/clientlib-site/resources/images/flinderuni_main_logo_black.png" height="40">
+    </div>
+    <div style="margin: 5px; text-align: right; font-size: 90%;">
+    <cite><small><i>
+    Developed by Flinders University in collaboration with Flinders Legal Centre
+    </i></small></cite>
+    </div>
+    </div>
+
+---
+objects:
+  - info: DAlist
+  - address: Address
+  - naddress: Address
+---
+include:
+- 0FLAC3_questions.yml
+- 0FLAC3_endpoints.yml
+---
+auto terms:
+  Full name: First and Last name
+  contractor: professional who is going to build the fence
+  neighbour: the owner of the land your share a boundary with
+---
+metadata:
+  title: |
+    FLAC3: Fencing!
+  short title: |
+    FLAC3
+  description: |
+    This application is for people going to Flinders Legal Centre for fencing issues.
+  authors:
+    - name: Annarose De Ionno
+      organization: Flinders University
+  revision_date: 2021-09-27
+
+---
+mandatory: True
+decoration: FLAC3.png
+question: Welcome!
+subquestion: |
+  This is FLAC3 app.
+  Do you agree with the terms and conditions?
+
+buttons:
+  - yes: continue
+  - no: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+---
+mandatory: True
+question: Have you tried speaking with your neighbours?
+subquestion: |
+  Please remember to discuss with your neighbours to try and resolve!!
+yesno: FLACneighbourstalk
+---
+question: You have not attempted to speak with your neighbour
+subquestion: |
+  Here's 5 reasons you should
+field: FLACtalk
+buttons:
+  - "I understand and wish to continue": True
+---
+mandatory: True
+code: |
+  if FLACneighbourstalk:
+    if FLACformtype == 'Form 2':
+      if FLACdamage == 'Yes, I did':
+        endpoint_5
+      elif FLACdamage == 'Yes, neighbour did':
+        endpoint_6
+      else:
+        if FLACneighbour == True:
+          if FLACelig == True:
+            endpoint_4
+          else:
+            endpoint_1
+        else:
+          endpoint_7
+    elif FLACformtype == 'Form 3':
+      if FLACform3_30days == True:
+        endpoint_4
+      else:
+        if FLACneighbour == True:
+          if FLACelig == True:
+            endpoint_4
+          else:
+            endpoint_3
+        else:
+          endpoint_7
+    elif FLACformtype == 'Emergency fencing':
+      endpoint_8
+    else:
+      endpoint_4
+  else:
+    if FLACtalk:
+      if FLACformtype == 'Form 2':
+        if FLACdamage == 'Yes, I did':
+          endpoint_5
+        elif FLACdamage == 'Yes, neighbour did':
+          endpoint_6
+        else:
+          if FLACneighbour == True:
+            if FLACelig == True:
+              endpoint_4
+            else:
+              endpoint_1
+          else:
+            endpoint_7
+      elif FLACformtype == 'Form 3':
+        if FLACform3_30days == True:
+          endpoint_4
+        else:
+          if FLACneighbour == True:
+            if FLACelig == True:
+              endpoint_4
+            else:
+              endpoint_3
+          else:
+            endpoint_7
+      elif FLACformtype == 'Emergency fencing':
+        endpoint_8
+      else:
+        endpoint_4
+    else:
+      endpoint_4
+---
+
