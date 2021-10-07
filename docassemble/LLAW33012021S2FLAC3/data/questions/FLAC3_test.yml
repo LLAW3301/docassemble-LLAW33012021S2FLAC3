@@ -30,8 +30,8 @@ objects:
   - naddress: Address
 ---
 include:
-- 0FLAC3_questions.yml
-- 0FLAC3_endpoints.yml
+- FLAC3_questions.yml
+- FLAC3_endpoints.yml
 ---
 auto terms:
   Full name: First and Last name

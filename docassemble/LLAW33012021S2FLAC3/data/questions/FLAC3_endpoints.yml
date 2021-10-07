@@ -1,0 +1,129 @@
+# all the endpoints
+---
+include:
+- FLAC3_questions.yml
+
+---
+event: endpoint_1
+question: This is endpoint 1
+subquestion: |
+  Form 2 formed here
+  Here is a table of your results, please check to ensure all the information is right:
+
+  Information | Your Answers
+  ------------|-------------
+  Your Name|${ FLACname }
+  Your Address|${ address }
+  Neighbours Name|${ FLACneighbourname }
+  Neighbours Address|${ naddress }
+  Length and Position of proposed fence|The fence will ${ FenceLength} long and at a position that is ${ FencePosition } between the properties.
+  Type of Fence| The type of fence is ${ FenceType }
+  Cost of Fence| ${ FenceCost}
+  Amount claiming| ${ Fencecostclaiming }
+  Name and Address of Contractor| ${Fencecontractor}
+  Date|${ today(format='d MMMM yyyy') }
+
+attachment:
+  name: Form 2 Notice
+  filename: form_2
+  docx template file: FLACForm_2.docx
+  valid formats:
+    - pdf
+
+
+buttons: 
+  - exit: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart
+---
+event: endpoint_2
+question: |
+  We recommend trying to speak to your neighbours before committing to legal proceedings! 
+  
+buttons:
+  - continue: continue
+  - exit: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+
+---
+code: |
+  FLACF3notice_date = format_date(FLACnotice_date,format='d MMMM yyyy')
+---
+event: endpoint_3
+question: Endpoint 3
+subquestion: |
+  Form 3 Formed Here:
+  
+  Information|Your Answers
+  ------------|-------------
+  Your Name|${ FLACname }
+  Your Address|${ address }
+  Neighbours Name|${ FLACneighbourname }
+  Neighbours Address|${ naddress }
+  Date you recieved their notice| ${ FLACF3notice_date}
+  Your objections to their notice| ${FLAC_objections}
+  %if FLAC_counter !='':
+  Your counter-proposals (if any)| ${FLAC_counter}
+  %endif
+
+attachment:
+  name: Form 3 Notice
+  filename: form_3
+  docx template file: FLACForm_3.docx
+  valid formats:
+    - pdf
+
+buttons:
+  - exit: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart
+---
+event: endpoint_4
+question: Other options, endpoint 4
+subquestion: |
+  The option you have choosen is not a situation this application can help you with as this is a complex situation. Please click consult to talk to Flinder legal centre for more informaiton and help.
+
+buttons:
+  - consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart 
+---
+event: endpoint_5
+question: endpoint 5
+subquestion: |
+  You are not entitlted to compensation due to your damage
+
+buttons:
+  - consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart
+---
+event: endpoint_6
+question: endpoint 6
+subquestion: |
+  Due to your neighbour causing damage you may recompensate whole amount
+
+buttons:
+  - consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart
+---
+event: endpoint_7
+question: Neighbour unknown, endpoint 7
+subquestion: |
+  As you do not know your neighbour ...
+
+buttons:
+  - consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart
+---
+event: endpoint_8
+question: You have choosen that you require emergency fencing
+subquestion: |
+  It is recommended if you have emergency fencing needs to ....
+
+buttons:
+  - consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart
