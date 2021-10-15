@@ -4,5 +4,5 @@ A docassemble extension.
 
 ## Author
 
-Annarose De Ionno, deio0004@flinders.edu.au
+Josephine Males, male0056@flinders.edu.au
 

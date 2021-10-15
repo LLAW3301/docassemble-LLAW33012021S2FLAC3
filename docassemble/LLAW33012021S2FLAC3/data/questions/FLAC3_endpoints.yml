@@ -1,0 +1,143 @@
+# all the endpoints
+---
+include:
+- FLAC3_questions.yml
+
+---
+event: Form 2 has been created
+question: Form 2 has been created
+subquestion: |
+  Based on your responses, a Form 2 has been recommended as the best option to proceed. This is a legal form which is used to repair a fence.
+  
+  Here is a table of your results, please check to ensure all the information is right:
+
+  Information | Your Answers
+  ------------|-------------
+  Your Name|${ FLACname }
+  Your Address|${ address }
+  Neighbours Name|${ FLACneighbourname }
+  Neighbours Address|${ naddress }
+  Length and Position of proposed fence|The fence will ${ FenceLength} long, ${ FenceHeight } tall and at a position that is ${ FencePosition } between the properties.
+  Type of Fence| The type of fence is ${ FenceType }
+  Cost of Fence| ${ FenceCost}
+  Amount claiming| ${ Fencecostclaiming }
+  Name and Address of Contractor| ${Fencecontractor}
+  Date|${ today(format='d MMMM yyyy') }
+  
+  You can download your form below.
+
+attachment:
+  name: Form 2 Notice
+  filename: form_2
+  docx template file: FLACForm_2.docx
+  valid formats:
+    - pdf
+
+
+buttons: 
+  - exit: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart
+
+---
+code: |
+  FLACF3notice_date = format_date(FLACnotice_date,format='d MMMM yyyy')
+---
+event: endpoint_3
+question: Form 3 has been produced.
+subquestion: |
+  Based on your responses, a Form 3 has been produced for you. The purpose of the Form 3 is to act as a formal cross notice that you are able to send back to the person or business that served you the original notice. 
+  
+  Please confirm that your answers below are correct to the best of your knowledge.
+  
+  Information|Your Answers
+  ------------|-------------
+  Your Name|${ FLACname }
+  Your Address|${ address }
+  Neighbours Name|${ FLACneighbourname }
+  Neighbours Address|${ naddress }
+  Date you received the notice| ${ FLACF3notice_date}
+  Your objections to the notice| ${FLAC_objections}
+  %if FLAC_counter !='':
+  Your counter-proposals (if any)| ${FLAC_counter}
+  %endif
+  
+  You are now able to download the Form 3 notice below.
+
+attachment:
+  name: Form 3 Notice
+  filename: form_3
+  docx template file: FLACForm_3.docx
+  valid formats:
+    - pdf
+
+buttons:
+  - exit: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart
+---
+event: endpoint_4
+question: Too Complex!
+subquestion: |
+  Unfortunately, the option you have selected is a situation slightly too complex to be solved by this application. 
+  
+  Please click the consult button below to organise an appointment with the Flinders Legal Centre for assistance on this issue. 
+
+buttons:
+  - consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart 
+---
+event: endpoint_5
+question: You are not entitled to compensation due to your damage. 
+subquestion: |
+  You are not entitled to compensation due to your damage.
+  
+  Please click the consult button below to organise an appointment with the Flinders Legal Centre for assistance on this issue.  
+
+buttons:
+  - consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart
+---
+event: endpoint_6
+question: Neighbour has caused damage. 
+subquestion: |
+  You have reached this point because your neighbour has caused damage to your fence, likely resulting in costs in reparation.
+
+  Based on this, we recommend that you discuss your options with the Flinders Legal Centre. 
+
+buttons:
+  - consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart
+---
+event: endpoint_7
+question: Unsure who neighbour is
+subquestion: |
+  As you are not sure who the owner of the neighbouring land is, unfortunately you are unable to properly complete the next steps. 
+  
+  Please click the consult button below to organise an appointment with the Flinders Legal Centre for assistance. 
+
+buttons:
+  - consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart
+---
+event: endpoint_8
+question: You have choosen that you require emergency fencing.
+subquestion: |
+  You have selected that you require emergency fencing.
+ 
+  Emergency fencing is addressed in section 16 of the Fencing Act which states that in the case of an emergency you are entitled to fix the fence adjoining the two properties without notice and still recover one half of the costs or the amount the adjoining owner would be liable to pay.
+ 
+  However, you must ensure that the immediate rectification of a fence is urgent. For example, in the incident where livestock and pets are at risk of escaping without a fence in place. This is to ensure that in all fencing matters, reasonable steps are taken to inform your neighbour of your desire to rectify a fence and are seeking financial contribution from them.
+ 
+  For further information and clarification on your particular situation [click here](https://lsc.sa.gov.au/resources/FencesandtheLawBooklet.pdf)
+  
+  If you wish to talk to Flinders Legal Centre then click consult to make a booking.
+
+buttons:
+  - consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/
+  - restart: restart

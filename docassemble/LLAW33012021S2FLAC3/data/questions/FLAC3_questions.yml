@@ -1,0 +1,121 @@
+---
+question: What is your name?
+fields:
+ - Full name: FLACname
+---
+question: What is your neighbours name? If your neighbour is a business, please state business name.
+fields:
+ - Full name: FLACneighbourname
+---
+question: What is your fencing issue?
+field: FLACformtype
+choices:
+  - I would like to build a new fence.
+  - I would like to replace my fence as it is damaged.
+  - I would like to replace my fence. There is nothing wrong with the current fence. 
+  - I have recieved a fencing notice from my neighbour and do not agree with it.
+  - I require emergency fencing.
+---
+question: |
+  How long has it been since you've been served with a notice of intention?
+field: FLACform3_30days
+buttons:
+ - "More than 30 days": True
+ - "Less than 30 days": False
+---
+question: Is your property any of the following?
+subquestion: |
+  - Tenant
+  - Adjoining Crown land
+yesno: FLACelig
+---
+question: Did you or your neighbour cause the damage to the fence?
+field: FLACdamage
+choices:
+  - Yes, I did
+  - Yes, neighbour did
+  - No, neither at fault
+---
+question: Do you know who your neighbour is?
+yesno: FLACneighbour
+---
+question: |
+  What is your address?
+fields:
+  - Address: address.address
+  - Unit: address.unit
+    required: False
+  - Suburb: address.city
+  - State: address.state
+    required: False
+  - Postal Code: address.postal_code
+    required: True
+
+---
+question: |
+  What is your neighbour's address?
+fields:
+  - Address: naddress.address
+  - Unit: naddress.unit
+    required: False
+  - Suburb: naddress.city
+  - State: naddress.state
+    required: False
+  - Postal Code: naddress.postal_code
+    required: True
+
+---
+question: Fence information
+fields:
+  - "How long will your fence be in meters?": FenceLength
+    hint: e.g. 2 or 3
+    datatype: number
+  - "How tall will your fence be in meters?": FenceHeight
+    hint: e.g. 2 or 3
+    datatype: number
+  - "What is the position?": FencePosition
+    datatype: pulldown
+    choices:
+      - back of property
+      - middle of property
+  - "What type of fence is it?": FenceType
+    hint: e.g. A wooden fence painted white
+    input type: area
+---
+question: What is the cost of the fence?
+fields:
+  - Cost of Fence: FenceCost
+    datatype: currency
+    min: 0
+  - Cost you are claiming from your neighbour: Fencecostclaiming
+    datatype: currency
+    min: 0
+---
+question: What is the contractors name?
+fields:
+  - Name: Fencecontractor
+---
+objects:
+  - address: Address
+  - naddress: Address
+---
+question: What are your objections to your neighbours notice to repair the fence?
+fields:
+  - Your objections: FLAC_objections
+    hint: e.g. The suggested cost is too expensive, I do not approve of the contractor
+    input type: area
+---
+question: What are your counter proposals?
+subquestion: |
+   Note, you are not required to submit counter proposals. If you do not have a solution but are willing to enter into negotiations with your neighbour about this, then insert this into the field. 
+fields:
+  - Your suggestions: FLAC_counter
+    hint: e.g. Insert details of another contactor, suggest a different fence style
+    input type: area
+    required: False
+---
+question: When did you recieve the notice?
+fields:
+  - Date: FLACnotice_date
+    datatype: date
+---
