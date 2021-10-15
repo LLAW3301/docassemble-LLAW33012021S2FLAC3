@@ -44,8 +44,8 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
 
 setup(name='docassemble.LLAW33012021S2FLAC3',
       version='0.0.1',
-      description=('A docassemble extension.'),
-      long_description='# docassemble.LLAW33012021S2FLAC3\r\n\r\nA docassemble extension.\r\n\r\n## Author\r\n\r\nAnnarose De Ionno, deio0004@flinders.edu.au\r\n\r\n',
+      description=('FLAC3 Prototype Draft - to be edited'),
+      long_description='# docassemble.LLAW33012021S2FLAC3\r\n\r\nA docassemble extension.\r\nThis is a draft to be edited\r\n\r\n## Author\r\n\r\nAnnarose De Ionno, deio0004@flinders.edu.au\r\n\r\n',
       long_description_content_type='text/markdown',
       author='Annarose De Ionno',
       author_email='deio0004@flinders.edu.au',

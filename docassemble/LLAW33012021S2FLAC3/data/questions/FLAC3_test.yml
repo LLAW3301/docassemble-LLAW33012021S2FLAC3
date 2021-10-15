@@ -64,14 +64,38 @@ buttons:
     url: https://www.flinderslegalcentre.net.au/dir/
 ---
 mandatory: True
-question: Have you tried speaking with your neighbours?
+question: |
+  #### Have you tried speaking with your neighbours?
 subquestion: |
-  Please remember to discuss with your neighbours to try and resolve!!
+  **Talking to your neighbour is really important.** The purpose of the Fencing Act is to provide the assistance required when mitigating disputes between you and your neighbour in order to provide financial compensation at the end of the dispute. It is for this reason that we recommend that the first step is talking to your neighbour.
+
+  If you go through the legal process, then at the end of it you are bound by the legal process. If you informally go through an agreement, then you are free to make the agreement suit you.
+
+  **Tips for talking to your neighbour:**
+  
+  * Don’t bring up disputes that have happened in the past with your neighbour! 
+  * Keep the chat friendly but focused on the fence and the issues at hand.
+  * Make sure the deal is mutually beneficial. Fence repairs can be expensive, so going in with a quote or with a budget can be a really helpful tool. 
+  * Make sure to consider what your neighbours budget is as well. 
+  
+  **Have you spoken with your neighbours?**
 yesno: FLACneighbourstalk
 ---
-question: You have not attempted to speak with your neighbour
+question: |
+  #### You have not attempted to speak with your neighbour
 subquestion: |
-  Here's 5 reasons you should
+  ###### Before commencing legal proceedings, it is important that you have tried to resolve your dispute privately. Here are some reasons why:
+  - While legal proceedings are important, so are friendly neighbourly relations!
+  - Avoid conflict and unfriendly relations with your neighbours by initiating a friendly conversation with them.
+  - What you do about your fence will impact your neighbour! Even if your neighbour has not paid for the fence, it is still regarded as a joint asset.
+  ###### Your neighbour has no obligation to pay any sum towards the fence unless:
+  * They have agreed to pay; or
+  * The proper procedure so requires, and this has been followed; or
+  * It is ordered by the Court.
+	
+  Having a conversation and getting their consent is the easiest and most efficient way!
+  If you are struggling to get your neighbours consent, consider the route of mediation.
+
 field: FLACtalk
 buttons:
   - "I understand and wish to continue": True
@@ -79,7 +103,7 @@ buttons:
 mandatory: True
 code: |
   if FLACneighbourstalk:
-    if FLACformtype == 'Form 2':
+    if FLACformtype == 'I would like to replace my fence as it is damaged.':
       if FLACdamage == 'Yes, I did':
         endpoint_5
       elif FLACdamage == 'Yes, neighbour did':
@@ -92,7 +116,7 @@ code: |
             endpoint_1
         else:
           endpoint_7
-    elif FLACformtype == 'Form 3':
+    elif FLACformtype == 'I have recieved a notice from my neighbour and do not agree with it.':
       if FLACform3_30days == True:
         endpoint_4
       else:
@@ -103,13 +127,13 @@ code: |
             endpoint_3
         else:
           endpoint_7
-    elif FLACformtype == 'Emergency fencing':
+    elif FLACformtype == 'I require emergency fencing.':
       endpoint_8
     else:
       endpoint_4
   else:
     if FLACtalk:
-      if FLACformtype == 'Form 2':
+      if FLACformtype == 'I would like to replace my fence as it is damaged.':
         if FLACdamage == 'Yes, I did':
           endpoint_5
         elif FLACdamage == 'Yes, neighbour did':
@@ -122,7 +146,7 @@ code: |
               endpoint_1
           else:
             endpoint_7
-      elif FLACformtype == 'Form 3':
+      elif FLACformtype == 'I have recieved a notice from my neighbour and do not agree with it.':
         if FLACform3_30days == True:
           endpoint_4
         else:
@@ -133,7 +157,7 @@ code: |
               endpoint_3
           else:
             endpoint_7
-      elif FLACformtype == 'Emergency fencing':
+      elif FLACformtype == 'I require emergency fencing.':
         endpoint_8
       else:
         endpoint_4

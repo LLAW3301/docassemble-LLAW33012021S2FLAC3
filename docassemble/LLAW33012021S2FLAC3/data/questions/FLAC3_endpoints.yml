@@ -16,7 +16,7 @@ subquestion: |
   Your Address|${ address }
   Neighbours Name|${ FLACneighbourname }
   Neighbours Address|${ naddress }
-  Length and Position of proposed fence|The fence will ${ FenceLength} long and at a position that is ${ FencePosition } between the properties.
+  Length and Position of proposed fence|The fence will ${ FenceLength} long, ${ FenceHeight } tall and at a position that is ${ FencePosition } between the properties.
   Type of Fence| The type of fence is ${ FenceType }
   Cost of Fence| ${ FenceCost}
   Amount claiming| ${ Fencecostclaiming }
@@ -38,7 +38,7 @@ buttons:
 ---
 event: endpoint_2
 question: |
-  We recommend trying to speak to your neighbours before committing to legal proceedings! 
+  Prior to commencing legal proceedings against your neighbour, it is important to discuss your dispute with them privately. Please try and reach a resolution between yourselves before resorting to settling your dispute through using this application.
   
 buttons:
   - continue: continue
@@ -52,7 +52,7 @@ code: |
 event: endpoint_3
 question: Endpoint 3
 subquestion: |
-  Form 3 Formed Here:
+  Endpoint 3 Form 3 Formed Here:
   
   Information|Your Answers
   ------------|-------------
@@ -79,9 +79,11 @@ buttons:
   - restart: restart
 ---
 event: endpoint_4
-question: Other options, endpoint 4
+question: Too Complex!
 subquestion: |
-  The option you have choosen is not a situation this application can help you with as this is a complex situation. Please click consult to talk to Flinder legal centre for more informaiton and help.
+  Unfortunately, the option you have selected is a situation slightly too complex to be solved by this application. 
+  
+  Please click the consult button below to organise an appointment with the Flinders Legal Centre for assistance on this issue. 
 
 buttons:
   - consult: exit
@@ -119,9 +121,17 @@ buttons:
   - restart: restart
 ---
 event: endpoint_8
-question: You have choosen that you require emergency fencing
+question: You have choosen that you require emergency fencing.
 subquestion: |
-  It is recommended if you have emergency fencing needs to ....
+  You have selected that you require emergency fencing.
+ 
+  Emergency fencing is addressed in section 16 of the Fencing Act which states that in the case of an emergency you are entitled to fix the fence adjoining the two properties without notice and still recover one half of the costs or the amount the adjoining owner would be liable to pay.
+ 
+  However, you must ensure that the immediate rectification of a fence is urgent. For example, in the incident where livestock and pets are at risk of escaping without a fence in place. This is to ensure that in all fencing matters, reasonable steps are taken to inform your neighbour of your desire to rectify a fence and are seeking financial contribution from them.
+ 
+  For further information and clarification on your particular situation [click here](https://lsc.sa.gov.au/resources/FencesandtheLawBooklet.pdf)
+  
+  If you wish to talk to Flinders Legal Centre then click consult to make a booking.
 
 buttons:
   - consult: exit
