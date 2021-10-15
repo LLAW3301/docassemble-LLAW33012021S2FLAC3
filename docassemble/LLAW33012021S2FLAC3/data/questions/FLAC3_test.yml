@@ -36,7 +36,7 @@ include:
 auto terms:
   Full name: First and Last name
   contractor: professional who is going to build the fence
-  neighbour: the owner of the land your share a boundary with
+  neighbour: the owner of the land you share a boundary with
 ---
 metadata:
   title: |
@@ -59,6 +59,8 @@ subquestion: |
   This App is designed to help you with the initial steps of your fencing dispute and to guide you through the dispute process. 
   
   A fencing dispute can relate to the erection, replacement and maintenance of fences. This app will ask a number of prompting questions to guide you to either completing a relevant form or directing you back to the Flinders Legal Centre to make an appointment.
+  
+  If you are not the owner of the property you reside at this application is not for you and we recommended reaching out to the legal owner of the land.
   
   DISCLAIMER: This app does not constitute legal advice. This information is only valid for residential properties in South Australia.
   
@@ -124,7 +126,7 @@ code: |
             endpoint_1
         else:
           endpoint_7
-    elif FLACformtype == 'I have recieved a notice from my neighbour and do not agree with it.':
+    elif FLACformtype == 'I have received a fencing notice from my neighbour and do not agree with it.':
       if FLACform3_30days == True:
         endpoint_4
       else:
@@ -154,7 +156,7 @@ code: |
               endpoint_1
           else:
             endpoint_7
-      elif FLACformtype == 'I have recieved a notice from my neighbour and do not agree with it.':
+      elif FLACformtype == 'I have received a fencing notice from my neighbour and do not agree with it.':
         if FLACform3_30days == True:
           endpoint_4
         else:

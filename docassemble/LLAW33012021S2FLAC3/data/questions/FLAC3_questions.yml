@@ -13,7 +13,7 @@ choices:
   - I would like to build a new fence.
   - I would like to replace my fence as it is damaged.
   - I would like to replace my fence. There is nothing wrong with the current fence. 
-  - I have recieved a fencing notice from my neighbour and do not agree with it.
+  - I have received a fencing notice from my neighbour and do not agree with it.
   - I require emergency fencing.
 ---
 question: |
@@ -67,11 +67,11 @@ fields:
 ---
 question: Fence information
 fields:
-  - "How long will your fence be in meters?": FenceLength
+  - "How long will your fence be in metres?": FenceLength
     hint: e.g. 2 or 3
     datatype: number
-  - "How tall will your fence be in meters?": FenceHeight
-    hint: e.g. 2 or 3
+  - "How tall will your fence be in metres?": FenceHeight
+    hint: e.g. 1.5 or 2
     datatype: number
   - "What is the position?": FencePosition
     datatype: pulldown
@@ -93,7 +93,7 @@ fields:
 ---
 question: What is the contractors name?
 fields:
-  - Name: Fencecontractor
+  - Business Name: Fencecontractor
 ---
 objects:
   - address: Address

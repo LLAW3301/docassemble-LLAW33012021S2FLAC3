@@ -4,7 +4,7 @@ include:
 - FLAC3_questions.yml
 
 ---
-event: Form 2 has been created
+event: endpoint_1
 question: Form 2 has been created
 subquestion: |
   Based on your responses, a Form 2 has been recommended as the best option to proceed. This is a legal form which is used to repair a fence.
@@ -13,15 +13,15 @@ subquestion: |
 
   Information | Your Answers
   ------------|-------------
-  Your Name|${ FLACname }
-  Your Address|${ address }
-  Neighbours Name|${ FLACneighbourname }
-  Neighbours Address|${ naddress }
-  Length and Position of proposed fence|The fence will ${ FenceLength} long, ${ FenceHeight } tall and at a position that is ${ FencePosition } between the properties.
-  Type of Fence| The type of fence is ${ FenceType }
-  Cost of Fence| ${ FenceCost}
-  Amount claiming| ${ Fencecostclaiming }
-  Name and Address of Contractor| ${Fencecontractor}
+  Your Name|${ FLACname }   [edit](${ url_action('FLACname') })
+  Your Address|${ address }  [edit](${ url_action('address') })
+  Neighbours Name|${ FLACneighbourname }   [edit](${ url_action('FLACFLACneighbournamename') })
+  Neighbours Address|${ naddress }   [edit](${ url_action('naddress') })
+  Length and Position of proposed fence|The fence will ${ FenceLength} long, ${ FenceHeight } tall and at a position that is ${ FencePosition } between the properties.   [edit](${ url_action('FenceLength') })
+  Type of Fence| The type of fence is ${ FenceType } [edit](${ url_action('FenceType') })
+  Cost of Fence| ${ FenceCost}    [edit](${ url_action('FenceCost') })
+  Amount claiming| ${ Fencecostclaiming }   [edit](${ url_action('Fencecostclaiming') })
+  Name and Address of Contractor| ${Fencecontractor}    [edit](${ url_action('Fencecontractor') })
   Date|${ today(format='d MMMM yyyy') }
   
   You can download your form below.
@@ -32,6 +32,7 @@ attachment:
   docx template file: FLACForm_2.docx
   valid formats:
     - pdf
+    - docx
 
 
 buttons: 
@@ -52,12 +53,12 @@ subquestion: |
   
   Information|Your Answers
   ------------|-------------
-  Your Name|${ FLACname }
-  Your Address|${ address }
-  Neighbours Name|${ FLACneighbourname }
-  Neighbours Address|${ naddress }
-  Date you received the notice| ${ FLACF3notice_date}
-  Your objections to the notice| ${FLAC_objections}
+  Your Name|${ FLACname }  [edit](${ url_action('FLACname') })
+  Your Address|${ address }   [edit](${ url_action('address') })
+  Neighbours Name|${ FLACneighbourname }   [edit](${ url_action('FLACneighbourname') })
+  Neighbours Address|${ naddress }   [edit](${ url_action('naddress') })
+  Date you received the notice| ${ FLACF3notice_date}   [edit](${ url_action('FLACF3notice_date') })
+  Your objections to the notice| ${FLAC_objections}    [edit](${ url_action('FLAC_objections') })
   %if FLAC_counter !='':
   Your counter-proposals (if any)| ${FLAC_counter}
   %endif
@@ -70,6 +71,7 @@ attachment:
   docx template file: FLACForm_3.docx
   valid formats:
     - pdf
+    - docx
 
 buttons:
   - exit: exit
