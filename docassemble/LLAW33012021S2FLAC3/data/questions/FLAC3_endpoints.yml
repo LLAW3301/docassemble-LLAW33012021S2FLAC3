@@ -2,7 +2,11 @@
 ---
 include:
 - FLAC3_questions.yml
-
+---
+objects:
+  - address: Address
+  - naddress: Address
+  - baddress: Address
 ---
 event: endpoint_1
 question: Form 2 has been created
@@ -17,11 +21,13 @@ subquestion: |
   Your Address|${ address }  [edit](${ url_action('address') })
   Neighbours Name|${ FLACneighbourname }   [edit](${ url_action('FLACFLACneighbournamename') })
   Neighbours Address|${ naddress }   [edit](${ url_action('naddress') })
-  Length and Position of proposed fence|The fence will ${ FenceLength} long, ${ FenceHeight } tall and at a position that is ${ FencePosition } between the properties.   [edit](${ url_action('FenceLength') })
+  Length and Position of proposed fence|The fence will ${ FenceLength}m long, ${ FenceHeight }m tall and at a position that is ${ FencePosition } between the properties.   [edit](${ url_action('FenceLength') })
   Type of Fence| The type of fence is ${ FenceType } [edit](${ url_action('FenceType') })
-  Cost of Fence| ${ FenceCost}    [edit](${ url_action('FenceCost') })
-  Amount claiming| ${ Fencecostclaiming }   [edit](${ url_action('Fencecostclaiming') })
-  Name and Address of Contractor| ${Fencecontractor}    [edit](${ url_action('Fencecontractor') })
+  Cost of Fence| $ ${ FenceCost}    [edit](${ url_action('FenceCost') })
+  Amount claiming| $ ${ Fencecostclaiming }   [edit](${ url_action('Fencecostclaiming') })
+  Name of Contractor| ${Fencecontractor} [edit](${ url_action('Fencecontractor') })
+  Phone Number of Contractor | ${ContractorNumber }   [edit](${ url_action('Fencecontractor') })
+  Address of Contractor | ${ baddress }   [edit](${ url_action('baddress') })
   Date|${ today(format='d MMMM yyyy') }
   
   You can download your form below.
@@ -91,9 +97,9 @@ buttons:
   - restart: restart 
 ---
 event: endpoint_5
-question: You are not entitled to compensation due to your damage. 
+question: You are unlikely to be entitled to compensation due to your damage. 
 subquestion: |
-  You are not entitled to compensation due to your damage.
+  You are unlikely to receive compensation due to your damage.
   
   Please click the consult button below to organise an appointment with the Flinders Legal Centre for assistance on this issue.  
 

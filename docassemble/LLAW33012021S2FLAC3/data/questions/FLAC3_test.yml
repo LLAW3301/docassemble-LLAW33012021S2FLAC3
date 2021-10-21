@@ -1,16 +1,20 @@
 ---
+#image source for the header
 objects:
   - FLAClogo: DAStaticFile.using(filename='FLAC3.png')
 ---
+#for the header image
 mandatory: True
 code: |
   set_parts(logo='<img src="' + FLAClogo.url_for() + '" style="height: 55px;">')
 ---
+# Remove debugging and logging in features
 features:
   css: FLAC3.css
   debug: False
   hide standard menu: True
 ---
+#footer details
 default screen parts:
   post: |
     <div style="display: flex; height: 200px; align-items: flex-end; flex-direction: row-reverse">
@@ -24,15 +28,18 @@ default screen parts:
     </div>
 
 ---
+#to code for the addresses in the questions
 objects:
-  - info: DAlist
   - address: Address
   - naddress: Address
+  - baddress: Address
 ---
+#other files
 include:
 - FLAC3_questions.yml
 - FLAC3_endpoints.yml
 ---
+#definitions of green words
 auto terms:
   Full name: First and Last name
   contractor: professional who is going to build the fence
@@ -51,6 +58,7 @@ metadata:
   revision_date: 2021-09-27
 
 ---
+#welcome screen
 mandatory: True
 decoration: FLAC3.png
 question:  Welcome to Fency!
@@ -62,7 +70,10 @@ subquestion: |
   
   If you are not the owner of the property you reside at this application is not for you and we recommended reaching out to the legal owner of the land.
   
-  DISCLAIMER: This app does not constitute legal advice. This information is only valid for residential properties in South Australia.
+  **DISCLAIMER:** 
+  
+  * This app does not constitute legal advice. 
+  * This information is only valid for residential properties in South Australia.
   
   Do you understand and consent to proceed?
 
@@ -71,6 +82,7 @@ buttons:
   - No: exit
     url: https://www.flinderslegalcentre.net.au/dir/
 ---
+#second screen asks user if they've spoken to neighbours
 mandatory: True
 question: |
   #### Have you tried speaking with your neighbours?
@@ -110,6 +122,7 @@ field: FLACtalk
 buttons:
   - "I understand and wish to continue": True
 ---
+#main code that controls the application
 mandatory: True
 code: |
   if FLACneighbourstalk:
@@ -130,13 +143,10 @@ code: |
       if FLACform3_30days == True:
         endpoint_4
       else:
-        if FLACneighbour == True:
-          if FLACelig == True:
-            endpoint_4
-          else:
-            endpoint_3
+        if FLACelig == True:
+          endpoint_4
         else:
-          endpoint_7
+          endpoint_3
     elif FLACformtype == 'I require emergency fencing.':
       endpoint_8
     else:

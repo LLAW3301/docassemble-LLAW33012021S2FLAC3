@@ -2,10 +2,12 @@
 question: What is your name?
 fields:
  - Full name: FLACname
+   default: Bob Klein
 ---
 question: What is your neighbours name? If your neighbour is a business, please state business name.
 fields:
  - Full name: FLACneighbourname
+   default: Jane Smith
 ---
 question: What is your fencing issue?
 field: FLACformtype
@@ -17,7 +19,7 @@ choices:
   - I require emergency fencing.
 ---
 question: |
-  How long has it been since you've been served with a notice of intention?
+  How long has it been since you have received a notice of intention from your neighbour?
 field: FLACform3_30days
 buttons:
  - "More than 30 days": True
@@ -35,6 +37,7 @@ choices:
   - Yes, I did
   - Yes, neighbour did
   - No, neither at fault
+default: No, neither at fault
 ---
 question: Do you know who your neighbour is?
 yesno: FLACneighbour
@@ -43,12 +46,25 @@ question: |
   What is your address?
 fields:
   - Address: address.address
-  - Unit: address.unit
+    default: 123 Flinders Drive
+  - Unit: naddress.unit
     required: False
   - Suburb: address.city
+    default: Bedford Park
   - State: address.state
+    default: South Australia
+    choices:
+      - South Australia
+      - New South Wales
+      - Queensland
+      - Victoria
+      - Western Australia
+      - Tasmania
+      - Australian Capital Territory
+      - Northen Territory
     required: False
   - Postal Code: address.postal_code
+    default: 5000
     required: True
 
 ---
@@ -56,48 +72,103 @@ question: |
   What is your neighbour's address?
 fields:
   - Address: naddress.address
+    default: 124 Flinders Drive
   - Unit: naddress.unit
     required: False
   - Suburb: naddress.city
+    default: Bedford Park
   - State: naddress.state
+    default: South Australia
+    choices:
+      - South Australia
+      - New South Wales
+      - Queensland
+      - Victoria
+      - Western Australia
+      - Tasmania
+      - Australian Capital Territory
+      - Northen Territory
     required: False
   - Postal Code: naddress.postal_code
+    default: 5000
     required: True
+    
 
 ---
-question: Fence information
+question: Fence Information
 fields:
   - "How long will your fence be in metres?": FenceLength
     hint: e.g. 2 or 3
     datatype: number
+    default: 3
   - "How tall will your fence be in metres?": FenceHeight
     hint: e.g. 1.5 or 2
     datatype: number
+    default: 1.5
+  - note: A fence higher than 1.8m may need additional council approval. 
   - "What is the position?": FencePosition
     datatype: pulldown
     choices:
-      - back of property
-      - middle of property
+      - back of my property
+      - middle of my property
+      - left of my property
+      - right of my property
+      - in front of my property
+    default: right of my property
   - "What type of fence is it?": FenceType
     hint: e.g. A wooden fence painted white
     input type: area
+    default: a wooden fence painted white
+  
 ---
 question: What is the cost of the fence?
 fields:
   - Cost of Fence: FenceCost
     datatype: currency
     min: 0
+    default: 5000
   - Cost you are claiming from your neighbour: Fencecostclaiming
     datatype: currency
     min: 0
+    default: 2500
 ---
 question: What is the contractors name?
 fields:
   - Business Name: Fencecontractor
+    default: John Does Fences
+  - Business Phone Number: ContractorNumber
+    datatype: integer
+    default: 0412345123
+
+---
+Question: What is the contractors address?
+fields:
+  - Address: baddress.address
+    default: 123 Builders Drive
+  - Unit: baddress.unit
+    required: False
+  - Suburb: baddress.city
+    default: Bedford Park
+  - State: baddress.state
+    default: South Australia
+    choices:
+      - South Australia
+      - New South Wales
+      - Queensland
+      - Victoria
+      - Western Australia
+      - Tasmania
+      - Australian Capital Territory
+      - Northen Territory
+    required: False
+  - Postal Code: baddress.postal_code
+    default: 5000
+    required: True
 ---
 objects:
   - address: Address
   - naddress: Address
+  - baddress: Address
 ---
 question: What are your objections to your neighbours notice to repair the fence?
 fields:
