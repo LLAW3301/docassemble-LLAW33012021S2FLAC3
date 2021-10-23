@@ -25,10 +25,13 @@ buttons:
  - "More than 30 days": True
  - "Less than 30 days": False
 ---
-question: Is your property any of the following?
+question: Are you a tenant or adjoining crown land?
 subquestion: |
-  - Tenant
+  - tenant 
+  If you are a tenant please contact your landlord in relation to your fencing related questions. 
+  
   - Adjoining Crown land
+  Crown land is any land that the State Government owns and manages. This includes land dedicated to custodian purposes such as parks, community halls, sporting grounds and war memorials. It also includes national parks and all other public land properties. 
 yesno: FLACelig
 ---
 question: Did you or your neighbour cause the damage to the fence?

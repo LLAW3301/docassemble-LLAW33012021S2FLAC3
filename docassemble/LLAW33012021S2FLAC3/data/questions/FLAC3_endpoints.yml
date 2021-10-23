@@ -133,13 +133,13 @@ buttons:
   - restart: restart
 ---
 event: endpoint_8
-question: You have choosen that you require emergency fencing.
+question: You have chosen that you require emergency fencing.
 subquestion: |
   You have selected that you require emergency fencing.
  
   Emergency fencing is addressed in section 16 of the Fencing Act which states that in the case of an emergency you are entitled to fix the fence adjoining the two properties without notice and still recover one half of the costs or the amount the adjoining owner would be liable to pay.
  
-  However, you must ensure that the immediate rectification of a fence is urgent. For example, in the incident where livestock and pets are at risk of escaping without a fence in place. This is to ensure that in all fencing matters, reasonable steps are taken to inform your neighbour of your desire to rectify a fence and are seeking financial contribution from them.
+  However, it is important to ensure the need for a fence is an urgent matter. For example, in the incident where livestock and pets are at risk of escaping without a fence in place. This allows for reasonable steps to be taken in informing your neighbour of your desire to rectify a fence and are seeking financial contribution from them.
  
   For further information and clarification on your particular situation [click here](https://lsc.sa.gov.au/resources/FencesandtheLawBooklet.pdf)
   
