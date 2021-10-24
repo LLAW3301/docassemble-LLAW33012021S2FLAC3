@@ -25,13 +25,19 @@ buttons:
  - "More than 30 days": True
  - "Less than 30 days": False
 ---
-question: Are you a tenant or adjoining crown land?
+question: Does you property fit any of these three situations?
 subquestion: |
-  - tenant 
+  ** Tenant:**
+  
   If you are a tenant please contact your landlord in relation to your fencing related questions. 
   
-  - Adjoining Crown land
+  ** Adjoining Crown land:**
+  
   Crown land is any land that the State Government owns and manages. This includes land dedicated to custodian purposes such as parks, community halls, sporting grounds and war memorials. It also includes national parks and all other public land properties. 
+  
+  ** Strata Unit:** 
+  
+  Most apartments, units and townhouses are Strata Units and will be have a Strata management company. If you pay Strata fees this is most likely you or please double check if you live in an apartment, unit or townhouse.
 yesno: FLACelig
 ---
 question: Did you or your neighbour cause the damage to the fence?
@@ -141,7 +147,7 @@ fields:
     default: John Does Fences
   - Business Phone Number: ContractorNumber
     datatype: integer
-    default: 0412345123
+    default: '0412345123'
 
 ---
 Question: What is the contractors address?

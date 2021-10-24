@@ -20,15 +20,15 @@
 }
 
 .btn-secondary{
-    color: rgb(0,0,0);
-    background-color: rgb(226,171,156);
+    color: rgb(255,255,255);
+    background-color: rgb(36,34,91);
     border-color: rgb(255,235,229);
 }
 
 .btn-secondary:hover{
     color: rgb(0,0,0);
-    background-color: rgb(245,225,219);
-    border-color: rgb(255,235,229);
+    background-color: rgb(174,20,30);
+    border-color: rgb(174,174,174);
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }
 
@@ -45,5 +45,12 @@
 }
 .btn-danger:hover{
     background-color: (210,56,73,0.7);
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+.btn-danger{
+    color: rgb(255,255,255);
+    background-color: rgb(36,34,91);
+    border-color: rgb(21,127,245);
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }

@@ -1,13 +1,16 @@
 # all the endpoints
 ---
+#other files included
 include:
 - FLAC3_questions.yml
 ---
+#ensures/formats the addresses correctly
 objects:
   - address: Address
   - naddress: Address
   - baddress: Address
 ---
+#produces form 2 which creates a pdf and docx file for the user to download
 event: endpoint_1
 question: Form 2 has been created
 subquestion: |
@@ -109,7 +112,7 @@ buttons:
   - restart: restart
 ---
 event: endpoint_6
-question: Neighbour has caused damage. 
+question: Your neighbour has caused damage. 
 subquestion: |
   You have reached this point because your neighbour has caused damage to your fence, likely resulting in costs in reparation.
 
