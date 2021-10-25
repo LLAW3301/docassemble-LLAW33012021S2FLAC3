@@ -219,7 +219,7 @@ fields:
     required: False
 ---
 #date for form 3
-question: When did you recieve the notice?
+question: When did you receive the notice?
 fields:
   - Date: FLACnotice_date
     datatype: date
