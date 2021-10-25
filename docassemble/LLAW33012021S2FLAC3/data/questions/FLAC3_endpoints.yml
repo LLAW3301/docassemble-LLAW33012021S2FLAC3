@@ -1,19 +1,22 @@
 # all the endpoints
 ---
+#other files included
 include:
 - FLAC3_questions.yml
 ---
+#ensures/formats the addresses correctly
 objects:
   - address: Address
   - naddress: Address
   - baddress: Address
 ---
+#produces form 2 which creates a pdf and docx file for the user to download
 event: endpoint_1
-question: Form 2 has been created
+question: Your Form 2 has been created!
 subquestion: |
-  Based on your responses, a Form 2 has been recommended as the best option to proceed. This is a legal form which is used to repair a fence.
+  Based on your responses, a Form 2 has been recommended as the best option to proceed. This is a form created in accordance with the *Fencing Act 1975* (SA) which is used to give notice to your neighbour that you want to repair a boardering fence.
   
-  Here is a table of your results, please check to ensure all the information is right:
+  Please confirm that your answers below are correct to the best of your knowledge.
 
   Information | Your Answers
   ------------|-------------
@@ -30,8 +33,11 @@ subquestion: |
   Address of Contractor | ${ baddress }   [edit](${ url_action('baddress') })
   Date|${ today(format='d MMMM yyyy') }
   
+  Please note that you must **attach the contractor's quote to your completed form** *prior* to the service of this form to the owner of the neighbouring land.
+  
+  If you do not, within thirty days after service of this form, receive a response from the owner of the neighbouring land, it will be taken that the owner of the neighbouring land has agreed to your proposals. The owner of the neighbouring land will then be bound thereby.
+  
   You can download your form below.
-
 attachment:
   name: Form 2 Notice
   filename: form_2
@@ -47,11 +53,24 @@ buttons:
   - restart: restart
 
 ---
+#formats the notice date AGLC style 
 code: |
   FLACF3notice_date = format_date(FLACnotice_date,format='d MMMM yyyy')
+  FLACF3notice_dayof = day_of(FLACnotice_date)
+  FLAC3notice_dayof_str = ''
+  if int(FLACF3notice_dayof)%10 == 1:
+    FLAC3notice_dayof_str = str(FLACF3notice_dayof) + "st"
+  elif int(FLACF3notice_dayof)%10 == 2:
+    FLAC3notice_dayof_str = str(FLACF3notice_dayof) + "nd" 
+  elif int(FLACF3notice_dayof)%10 == 3:
+    FLAC3notice_dayof_str = str(FLACF3notice_dayof) + "rd"   
+  else:
+    FLAC3notice_dayof_str = str(FLACF3notice_dayof) + "th"
+  FLACF3notice_monthof = format_date(FLACnotice_date,format='MMMM yyyy')
 ---
+#endpoint to create Form 3 which is the response notice
 event: endpoint_3
-question: Form 3 has been produced.
+question: A Form 3 has been created for you!
 subquestion: |
   Based on your responses, a Form 3 has been produced for you. The purpose of the Form 3 is to act as a formal cross notice that you are able to send back to the person or business that served you the original notice. 
   
@@ -66,8 +85,13 @@ subquestion: |
   Date you received the notice| ${ FLACF3notice_date}   [edit](${ url_action('FLACF3notice_date') })
   Your objections to the notice| ${FLAC_objections}    [edit](${ url_action('FLAC_objections') })
   %if FLAC_counter !='':
-  Your counter-proposals (if any)| ${FLAC_counter}
+  Your counter-proposals (if any)| ${FLAC_counter}   [edit](${ url_action('FLAC_counter') })
   %endif
+  
+  Please note that you can attach an alternative contractor's quote to your completed form *prior* to the service of this form to the owner of the neighbouring land.
+  
+  If you do not, within thirty days after service of this form, receive a response from the owner of the neighbouring land, it will be taken that the owner of the neighbouring land has agreed to your proposals. 
+  
   
   You are now able to download the Form 3 notice below.
 
@@ -84,6 +108,7 @@ buttons:
     url: https://www.flinderslegalcentre.net.au/dir/
   - restart: restart
 ---
+#default screen when things are too complicated for the application
 event: endpoint_4
 question: Too Complex!
 subquestion: |
@@ -93,9 +118,10 @@ subquestion: |
 
 buttons:
   - consult: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
+    url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
   - restart: restart 
 ---
+#when the user caused the damage to the fence themselves
 event: endpoint_5
 question: You are unlikely to be entitled to compensation due to your damage. 
 subquestion: |
@@ -105,11 +131,12 @@ subquestion: |
 
 buttons:
   - consult: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
+    url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
   - restart: restart
 ---
+#when the neighbour has caused the damage to the fence
 event: endpoint_6
-question: Neighbour has caused damage. 
+question: Your neighbour has caused damage. 
 subquestion: |
   You have reached this point because your neighbour has caused damage to your fence, likely resulting in costs in reparation.
 
@@ -117,29 +144,36 @@ subquestion: |
 
 buttons:
   - consult: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
+    url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
   - restart: restart
 ---
 event: endpoint_7
-question: Unsure who neighbour is
+question: Unsure who the neighbour is?
 subquestion: |
   As you are not sure who the owner of the neighbouring land is, unfortunately you are unable to properly complete the next steps. 
-  
+
+  If you do not know the owner of the neighbouring land, you have the following options:
+  	
+    a)  place a notice of intention (form 2) to perform fencing work in an obvious place on the neighbouring land. If no cross-notice is serviced upon you, you may proceed with the work as if the owner agreed.
+    
+    b) you may also apply for the court to make a decision (This is called a  ‘determination’). The court may then order the cost of the fencing work to be paid by the neighbouring land owner. It is recommended to discuss this option with Flinders Legal Centre. 
+
   Please click the consult button below to organise an appointment with the Flinders Legal Centre for assistance. 
 
 buttons:
   - consult: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
+    url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
   - restart: restart
 ---
+#emergency fencing endpoint for when someone selects this option
 event: endpoint_8
-question: You have choosen that you require emergency fencing.
+question: You have chosen that you require emergency fencing.
 subquestion: |
   You have selected that you require emergency fencing.
  
   Emergency fencing is addressed in section 16 of the Fencing Act which states that in the case of an emergency you are entitled to fix the fence adjoining the two properties without notice and still recover one half of the costs or the amount the adjoining owner would be liable to pay.
  
-  However, you must ensure that the immediate rectification of a fence is urgent. For example, in the incident where livestock and pets are at risk of escaping without a fence in place. This is to ensure that in all fencing matters, reasonable steps are taken to inform your neighbour of your desire to rectify a fence and are seeking financial contribution from them.
+  However, it is important to ensure the need for a fence is an urgent matter. For example, in the incident where livestock and pets are at risk of escaping without a fence in place. This allows for reasonable steps to be taken in informing your neighbour of your desire to rectify a fence and are seeking financial contribution from them.
  
   For further information and clarification on your particular situation [click here](https://lsc.sa.gov.au/resources/FencesandtheLawBooklet.pdf)
   
@@ -147,5 +181,5 @@ subquestion: |
 
 buttons:
   - consult: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
+    url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
   - restart: restart

@@ -43,9 +43,9 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
     return out
 
 setup(name='docassemble.LLAW33012021S2FLAC3',
-      version='0.0.1',
-      description=('A docassemble extension.'),
-      long_description='# docassemble.LLAW33012021S2FLAC3\r\n\r\nA docassemble extension.\r\n\r\n## Author\r\n\r\nAnnarose De Ionno\r\n\r\n',
+      version='1.0',
+      description=('Fencey is an application to help users through a fencing issue to either create a form 2 or form 3. If their issue is too complex they are referred to Flinders Legal Clinic.'),
+      long_description='# docassemble.LLAW33012021S2FLAC3\r\n\r\nThis application was made by Flinders University in collaboration with Flinders Legal Centre. This application is made for clients who having a fencing issue to provide guidance through their issues. Fency was specifically made for issues regarding the need to replace a fence due to damage or if they have been served with a notice of intention from their neighbour. This application will create a Form 2 or Form 3 depending on the users situation or if the situation is more complex will refer the user to book a consult with Flinders Legal Centre.\r\nThis application does not constitute legal advice nor replaces it.\r\n\r\n## Author\r\n\r\nAnnarose De Ionno, deio0004@flinders.edu.au\r\nJosephine Males, male0056@flinders.edu.au\r\nRumbi Sekete, seke0005@flinders.edu.au\r\nNikki Esmaeili, nikki.esmaeili@flinders.edu.au\r\nChloe Tunstill, tuns0011@flinders.edu.au\r\nKatie Henthorn, hent0023@flinders.edu.au\r\n\r\n',
       long_description_content_type='text/markdown',
       author='Annarose De Ionno',
       author_email='deio0004@flinders.edu.au',
