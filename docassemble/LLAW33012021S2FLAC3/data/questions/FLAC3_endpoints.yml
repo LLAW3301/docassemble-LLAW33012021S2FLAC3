@@ -169,15 +169,20 @@ buttons:
 event: endpoint_8
 question: You have chosen that you require emergency fencing.
 subquestion: |
-  You have selected that you require emergency fencing.
+  You have selected that you require emergency fencing. 
  
-  Emergency fencing is addressed in section 16 of the Fencing Act which states that in the case of an emergency you are entitled to fix the fence adjoining the two properties without notice and still recover one half of the costs or the amount the adjoining owner would be liable to pay.
- 
-  However, it is important to ensure the need for a fence is an urgent matter. For example, in the incident where livestock and pets are at risk of escaping without a fence in place. This allows for reasonable steps to be taken in informing your neighbour of your desire to rectify a fence and are seeking financial contribution from them.
- 
-  For further information and clarification on your particular situation [click here](https://lsc.sa.gov.au/resources/FencesandtheLawBooklet.pdf)
-  
+  At law, this is addressed in s16 of the *Fencing Act*, which states that in case of an emergency you are entitled to repair the fence adjoining two properties without notice and still recover the amount of money that the law would establish that the adjoining owner would be liable to pay. Traditionally, this is half the cost.
+
+  However, what does constitute an emergency is not defined. 
+
+  It is important that you have considered why this situation is urgent and are able to justify this. An example of an urgent situation would be where pets or livestock were at risk of escaping without a fence.
+
+  You are able to go ahead with the repair in an urgent situation without informing your neighbour, but it is also important to take all reasonable steps to communicate with your neighbour once the fence has been repaired and inform them of what has occurred, what the next steps are and whether you plan to seek financial contributions from them.
+
+  For further information and clarification on your particular situation [click here.](https://lsc.sa.gov.au/resources/FencesandtheLawBooklet.pdf)
+
   If you wish to talk to Flinders Legal Centre then click consult to make a booking.
+
 
 buttons:
   - consult: exit

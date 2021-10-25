@@ -33,7 +33,7 @@ buttons:
  - "Less than 30 days": False
 ---
 #eligibility question to ensure the user does not have a super complicated case as these factors can change what law is applicable
-question: Does you property fit any of these three situations?
+question: Does your property fit any of these three situations?
 subquestion: |
   ** Tenant:**
   
@@ -69,6 +69,7 @@ subquestion: |
 
 yesno: FLACneighbour
 ---
+#formatted so the user can enter their address easily
 question: |
   What is your address?
 fields:
@@ -148,6 +149,7 @@ fields:
     default: a wooden fence painted white
   
 ---
+#cost of fence page, codded to ensure that it is all currency
 question: What is the cost of the fence?
 fields:
   - Cost of Fence: FenceCost
@@ -159,6 +161,7 @@ fields:
     min: 0
     default: 2500
 ---
+#curly brackets is for the term definition
 question: What is the {contractor}s name?
 fields:
   - Business Name: Fencecontractor
@@ -191,6 +194,7 @@ fields:
     default: 5000
     required: True
 ---
+#all the addresses so they can be formatted correctly
 objects:
   - address: Address
   - naddress: Address
@@ -203,9 +207,10 @@ fields:
     default: The suggested cost is too expensive
     input type: area
 ---
+#for form 3
 question: What are your counter proposals?
 subquestion: |
-   **Note.** you are not required to submit counter proposals. If you do not have a solution but are willing to enter into negotiations with your neighbour about this, then insert this into the field. 
+   **Note.** You are not required to submit counter proposals. If you do not have a solution but are willing to enter into negotiations with your neighbour about this, then insert this into the field. 
 fields:
   - Your suggestions: FLAC_counter
     hint: e.g. Insert details of another contactor, suggest a different fence style
@@ -213,6 +218,7 @@ fields:
     input type: area
     required: False
 ---
+#date for form 3
 question: When did you recieve the notice?
 fields:
   - Date: FLACnotice_date

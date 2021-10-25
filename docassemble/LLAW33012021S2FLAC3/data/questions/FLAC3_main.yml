@@ -112,6 +112,7 @@ subquestion: |
   
   **Have you spoken with your neighbours?**
 yesno: FLACneighbourstalk
+
 ---
 question: |
   #### You have not attempted to speak with your {neighbour}!
@@ -134,6 +135,7 @@ subquestion: |
 field: FLACtalk
 buttons:
   - "I understand and wish to continue": True
+    
 ---
 #main code that controls the application
 mandatory: True
