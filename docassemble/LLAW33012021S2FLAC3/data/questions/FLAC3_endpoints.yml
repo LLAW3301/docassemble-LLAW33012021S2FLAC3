@@ -48,9 +48,9 @@ attachment:
 
 
 buttons: 
-  - exit: exit
+  - Exit: exit
     url: https://www.flinderslegalcentre.net.au/dir/
-  - restart: restart
+  - Restart: restart
 
 ---
 #formats the notice date AGLC style 
@@ -104,9 +104,9 @@ attachment:
     - docx
 
 buttons:
-  - exit: exit
+  - Exit: exit
     url: https://www.flinderslegalcentre.net.au/dir/
-  - restart: restart
+  - Restart: restart
 ---
 #default screen when things are too complicated for the application
 event: endpoint_4
@@ -117,9 +117,9 @@ subquestion: |
   Please click the consult button below to organise an appointment with the Flinders Legal Centre for assistance on this issue. 
 
 buttons:
-  - consult: exit
+  - Consult: exit
     url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
-  - restart: restart 
+  - Restart: restart 
 ---
 #when the user caused the damage to the fence themselves
 event: endpoint_5
@@ -130,9 +130,9 @@ subquestion: |
   Please click the consult button below to organise an appointment with the Flinders Legal Centre for assistance on this issue.  
 
 buttons:
-  - consult: exit
+  - Consult: exit
     url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
-  - restart: restart
+  - Restart: restart
 ---
 #when the neighbour has caused the damage to the fence
 event: endpoint_6
@@ -143,9 +143,9 @@ subquestion: |
   Based on this, we recommend that you discuss your options with the Flinders Legal Centre. 
 
 buttons:
-  - consult: exit
+  - Consult: exit
     url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
-  - restart: restart
+  - Restart: restart
 ---
 event: endpoint_7
 question: Unsure who the neighbour is?
@@ -161,9 +161,9 @@ subquestion: |
   Please click the consult button below to organise an appointment with the Flinders Legal Centre for assistance. 
 
 buttons:
-  - consult: exit
+  - Consult: exit
     url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
-  - restart: restart
+  - Restart: restart
 ---
 #emergency fencing endpoint for when someone selects this option
 event: endpoint_8
@@ -185,6 +185,6 @@ subquestion: |
 
 
 buttons:
-  - consult: exit
+  - Consult: exit
     url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
-  - restart: restart
+  - Restart: restart

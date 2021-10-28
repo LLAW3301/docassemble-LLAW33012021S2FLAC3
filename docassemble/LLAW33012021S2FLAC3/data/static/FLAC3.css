@@ -26,9 +26,9 @@
 }
 
 .btn-secondary:hover{
-    color: rgb(0,0,0);
-    background-color: rgb(174,20,30);
-    border-color: rgb(174,174,174);
+    color: rgb(255,255,255);
+    background-color: rgb(44,72,112);
+    border-color: rgb(255,235,229);
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }
 
