@@ -1,4 +1,8 @@
 ---
+include:
+  - FLAC3_endpoints.yml
+  - FLAC3_addresses.yml
+---
 #name of the user and used for both form 2 & 3
 question: What is your {full name}?
 fields:
@@ -65,63 +69,9 @@ subquestion: |
   If your neighbour owns the land, then you need to contact them directly. 
   
   
-  If your neighbour is a tenant, then you need to contact your neighbours landlord. 
+  If your neighbour is a tenant, then you need to contact your neighbour's landlord. 
 
 yesno: FLACneighbour
----
-#formatted so the user can enter their address easily
-question: |
-  What is your address?
-fields:
-  - Address: address.address
-    default: 123 Flinders Drive
-  - Unit: naddress.unit
-    required: False
-  - Suburb: address.city
-    default: Bedford Park
-  - State: address.state
-    default: South Australia
-    choices:
-      - South Australia
-      - New South Wales
-      - Queensland
-      - Victoria
-      - Western Australia
-      - Tasmania
-      - Australian Capital Territory
-      - Northen Territory
-    required: False
-  - Postal Code: address.postal_code
-    default: 5000
-    required: True
-
----
-question: |
-  What is your neighbour's address?
-fields:
-  - Address: naddress.address
-    default: 124 Flinders Drive
-  - Unit: naddress.unit
-    required: False
-  - Suburb: naddress.city
-    default: Bedford Park
-  - State: naddress.state
-    default: South Australia
-    choices:
-      - South Australia
-      - New South Wales
-      - Queensland
-      - Victoria
-      - Western Australia
-      - Tasmania
-      - Australian Capital Territory
-      - Northen Territory
-    required: False
-  - Postal Code: naddress.postal_code
-    default: 5000
-    required: True
-    
-
 ---
 question: Fence Information
 fields:
@@ -137,12 +87,11 @@ fields:
   - "What is the position?": FencePosition
     datatype: pulldown
     choices:
-      - back of my property
-      - middle of my property
-      - left of my property
-      - right of my property
-      - in front of my property
-    default: right of my property
+      - north of my property
+      - south of my property
+      - east of my property
+      - west of my property
+    default: south of my property
   - "What type of fence is it?": FenceType
     hint: e.g. A wooden fence painted white
     input type: area
@@ -170,36 +119,6 @@ fields:
     default: '0412345123'
 
 ---
-Question: What is the contractors address?
-fields:
-  - Address: baddress.address
-    default: 123 Builders Drive
-  - Unit: baddress.unit
-    required: False
-  - Suburb: baddress.city
-    default: Bedford Park
-  - State: baddress.state
-    default: South Australia
-    choices:
-      - South Australia
-      - New South Wales
-      - Queensland
-      - Victoria
-      - Western Australia
-      - Tasmania
-      - Australian Capital Territory
-      - Northen Territory
-    required: False
-  - Postal Code: baddress.postal_code
-    default: 5000
-    required: True
----
-#all the addresses so they can be formatted correctly
-objects:
-  - address: Address
-  - naddress: Address
-  - baddress: Address
----
 question: What are your objections to your neighbours notice to repair the fence?
 fields:
   - Your objections: FLAC_objections
@@ -219,7 +138,7 @@ fields:
     required: False
 ---
 #date for form 3
-question: When did you receive the notice?
+question: What is the date on the notice you received?
 fields:
   - Date: FLACnotice_date
     datatype: date

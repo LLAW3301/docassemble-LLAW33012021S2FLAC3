@@ -13,6 +13,7 @@ features:
   css: FLAC3.css
   debug: False
   hide standard menu: True
+  cache documents: False
 ---
 #footer details
 default screen parts:
@@ -28,16 +29,11 @@ default screen parts:
     </div>
 
 ---
-#to code for the addresses in the questions
-objects:
-  - address: Address
-  - naddress: Address
-  - baddress: Address
----
 #other files
 include:
 - FLAC3_questions.yml
 - FLAC3_endpoints.yml
+- FLAC3_addresses.yml
 ---
 #definitions of terms to help user understand they show as green words
 terms:
@@ -72,7 +68,7 @@ metadata:
 mandatory: True
 decoration: FLAC3.png
 question:  |
-  **Welcome to Fency!**
+  **Welcome to Fencey!**
 subquestion: |
   
   This app is designed to help you with the initial steps of your fencing dispute and to guide you through the dispute process. 

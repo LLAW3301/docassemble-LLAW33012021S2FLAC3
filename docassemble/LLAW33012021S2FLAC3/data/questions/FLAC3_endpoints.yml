@@ -3,54 +3,6 @@
 #other files included
 include:
 - FLAC3_questions.yml
----
-#ensures/formats the addresses correctly
-objects:
-  - address: Address
-  - naddress: Address
-  - baddress: Address
----
-#produces form 2 which creates a pdf and docx file for the user to download
-event: endpoint_1
-question: Your Form 2 has been created!
-subquestion: |
-  Based on your responses, a Form 2 has been recommended as the best option to proceed. This is a form created in accordance with the *Fencing Act 1975* (SA) which is used to give notice to your neighbour that you want to repair a boardering fence.
-  
-  Please confirm that your answers below are correct to the best of your knowledge.
-
-  Information | Your Answers
-  ------------|-------------
-  Your Name|${ FLACname }   [edit](${ url_action('FLACname') })
-  Your Address|${ address }  [edit](${ url_action('address') })
-  Neighbours Name|${ FLACneighbourname }   [edit](${ url_action('FLACFLACneighbournamename') })
-  Neighbours Address|${ naddress }   [edit](${ url_action('naddress') })
-  Length and Position of proposed fence|The fence will ${ FenceLength}m long, ${ FenceHeight }m tall and at a position that is ${ FencePosition } between the properties.   [edit](${ url_action('FenceLength') })
-  Type of Fence| The type of fence is ${ FenceType } [edit](${ url_action('FenceType') })
-  Cost of Fence| $ ${ FenceCost}    [edit](${ url_action('FenceCost') })
-  Amount claiming| $ ${ Fencecostclaiming }   [edit](${ url_action('Fencecostclaiming') })
-  Name of Contractor| ${Fencecontractor} [edit](${ url_action('Fencecontractor') })
-  Phone Number of Contractor | ${ContractorNumber }   [edit](${ url_action('Fencecontractor') })
-  Address of Contractor | ${ baddress }   [edit](${ url_action('baddress') })
-  Date|${ today(format='d MMMM yyyy') }
-  
-  Please note that you must **attach the contractor's quote to your completed form** *prior* to the service of this form to the owner of the neighbouring land.
-  
-  If you do not, within thirty days after service of this form, receive a response from the owner of the neighbouring land, it will be taken that the owner of the neighbouring land has agreed to your proposals. The owner of the neighbouring land will then be bound thereby.
-  
-  You can download your form below.
-attachment:
-  name: Form 2 Notice
-  filename: form_2
-  docx template file: FLACForm_2.docx
-  valid formats:
-    - pdf
-    - docx
-
-
-buttons: 
-  - Exit: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
-  - Restart: restart
 
 ---
 #formats the notice date AGLC style 
@@ -67,46 +19,7 @@ code: |
   else:
     FLAC3notice_dayof_str = str(FLACF3notice_dayof) + "th"
   FLACF3notice_monthof = format_date(FLACnotice_date,format='MMMM yyyy')
----
-#endpoint to create Form 3 which is the response notice
-event: endpoint_3
-question: A Form 3 has been created for you!
-subquestion: |
-  Based on your responses, a Form 3 has been produced for you. The purpose of the Form 3 is to act as a formal cross notice that you are able to send back to the person or business that served you the original notice. 
-  
-  Please confirm that your answers below are correct to the best of your knowledge.
-  
-  Information|Your Answers
-  ------------|-------------
-  Your Name|${ FLACname }  [edit](${ url_action('FLACname') })
-  Your Address|${ address }   [edit](${ url_action('address') })
-  Neighbours Name|${ FLACneighbourname }   [edit](${ url_action('FLACneighbourname') })
-  Neighbours Address|${ naddress }   [edit](${ url_action('naddress') })
-  Date you received the notice| ${ FLACF3notice_date}   [edit](${ url_action('FLACF3notice_date') })
-  Your objections to the notice| ${FLAC_objections}    [edit](${ url_action('FLAC_objections') })
-  %if FLAC_counter !='':
-  Your counter-proposals (if any)| ${FLAC_counter}   [edit](${ url_action('FLAC_counter') })
-  %endif
-  
-  Please note that you can attach an alternative contractor's quote to your completed form *prior* to the service of this form to the owner of the neighbouring land.
-  
-  If you do not, within thirty days after service of this form, receive a response from the owner of the neighbouring land, it will be taken that the owner of the neighbouring land has agreed to your proposals. 
-  
-  
-  You are now able to download the Form 3 notice below.
 
-attachment:
-  name: Form 3 Notice
-  filename: form_3
-  docx template file: FLACForm_3.docx
-  valid formats:
-    - pdf
-    - docx
-
-buttons:
-  - Exit: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
-  - Restart: restart
 ---
 #default screen when things are too complicated for the application
 event: endpoint_4
