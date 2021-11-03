@@ -111,7 +111,7 @@ fields:
     default: 2500
 ---
 #curly brackets is for the term definition
-question: What is the {contractor}s name?
+question: What is the {contractor}'s name?
 fields:
   - Business Name: Fencecontractor
     default: John Does Fences

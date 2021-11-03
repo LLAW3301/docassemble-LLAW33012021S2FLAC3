@@ -22,7 +22,7 @@ subquestion: |
   ------------|-------------
   Your Name|${ FLACname }   [edit](${ url_action('FLACname') })
   Your Address|${ address }  [edit](${ url_action('address.address') })
-  Neighbours Name|${ FLACneighbourname }   [edit](${ url_action('FLACneighbourname') })
+  Neighbour's Name|${ FLACneighbourname }   [edit](${ url_action('FLACneighbourname') })
   Neighbouring Property Address|${ faddress }   [edit](${ url_action('faddress.address') })
   Neighbour's Postal Address|${ naddress }   [edit](${ url_action('naddress.address') })
   Length and Position of proposed fence|The fence will ${ FenceLength}m long, ${ FenceHeight }m tall and at a position that is ${ FencePosition } between the properties.   [edit](${ url_action('FenceLength') })
@@ -66,8 +66,8 @@ subquestion: |
   ------------|-------------
   Your Name|${ FLACname }  [edit](${ url_action('FLACname') })
   Your Address|${ address } [edit](${ url_action('address.address') })
-  Neighbours Name|${ FLACneighbourname }   [edit](${ url_action('FLACneighbourname') })
-  Date on the notice| ${ FLACF3notice_date}   [edit](${ url_action('FLACF3notice_date') })
+  Neighbour's Name|${ FLACneighbourname }   [edit](${ url_action('FLACneighbourname') })
+  Date on the notice| ${ FLACF3notice_date}   [edit](${ url_action('FLACnotice_date') })
   Your objections to the notice| ${FLAC_objections}    [edit](${ url_action('FLAC_objections') })
   %if FLAC_counter !='':
   Your counter-proposals (if any)| ${FLAC_counter}   [edit](${ url_action('FLAC_counter') })
@@ -166,7 +166,7 @@ fields:
     default: 5000
     required: False
 ---
-Question: What is the contractors address?
+Question: What is the contractor's address?
 fields:
   - Address: baddress.address
     default: 123 Builders Drive
