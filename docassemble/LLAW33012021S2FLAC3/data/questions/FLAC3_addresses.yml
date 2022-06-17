@@ -98,13 +98,10 @@ question: |
   What is your address?
 fields:
   - Address: address.address
-    default: 123 Flinders Drive
   - Unit: address.unit
     required: False
   - Suburb: address.city
-    default: Bedford Park
   - State: address.state
-    default: South Australia
     choices:
       - South Australia
       - New South Wales
@@ -116,7 +113,6 @@ fields:
       - Northen Territory
     required: False
   - Postal Code: address.postal_code
-    default: 5000
     required: True
 
 ---
@@ -126,32 +122,25 @@ subquestion: |
   The address where the fence is located.
 fields:
   - Address: faddress.address
-    default: 124 Flinders Drive
   - Unit: faddress.unit
     required: False
   - Suburb: faddress.city
-    default: Bedford Park
   - State: faddress.state
-    default: South Australia
     choices:
       - South Australia
   - note: This must be a South Australian address.
     required: False
   - Postal Code: faddress.postal_code
-    default: 5000
     required: False
 ---
 question: |
   What is your neighbour's postal address?
 fields:
   - Address: naddress.address
-    default: 789 Sunset Drive
   - Unit: naddress.unit
     required: False
   - Suburb: naddress.city
-    default: Adelaide
   - State: naddress.state
-    default: South Australia
     choices:
       - South Australia
       - New South Wales
@@ -163,19 +152,15 @@ fields:
       - Northen Territory
     required: False
   - Postal Code: naddress.postal_code
-    default: 5000
     required: False
 ---
 Question: What is the contractor's address?
 fields:
   - Address: baddress.address
-    default: 123 Builders Drive
   - Unit: baddress.unit
     required: False
   - Suburb: baddress.city
-    default: Bedford Park
   - State: baddress.state
-    default: South Australia
     choices:
       - South Australia
       - New South Wales
@@ -187,7 +172,6 @@ fields:
       - Northen Territory
     required: False
   - Postal Code: baddress.postal_code
-    default: 5000
     required: True
 
 ---
