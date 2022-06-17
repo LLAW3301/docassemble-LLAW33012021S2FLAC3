@@ -7,14 +7,12 @@ include:
 question: What is your {full name}?
 fields:
  - Full name: FLACname
-   default: Bob Klein
 ---
 #name of the user's name that they are writing the notice to
 question: What is your neighbour's name? 
 subquestion: If your neighbour is a business, please state the business name.
 fields:
  - Full name: FLACneighbourname
-   default: Jane Smith
 ---
 #guides the user to the right direction, some of these options are out of FLAC3 area but at a later time can be linked to previous FLAC projects to make it cohesive and direct user to the right source
 question: What is your fencing issue?
@@ -59,7 +57,6 @@ choices:
   - Yes, I did
   - Yes, neighbour did
   - No, neither at fault
-default: No, neither at fault
 ---
 #to serve a notice the user must know the neighbour or else follow steps to find out who the neighbour is and ensure it is addressed to the right person
 question: Do you know who your neighbour is?
@@ -78,11 +75,9 @@ fields:
   - "How long will your fence be in metres?": FenceLength
     hint: e.g. 2 or 3
     datatype: number
-    default: 3
   - "How tall will your fence be in metres?": FenceHeight
     hint: e.g. 1.5 or 2
     datatype: number
-    default: 1.5
   - note: A fence higher than 1.8m may need additional council approval. 
   - "What is the position?": FencePosition
     datatype: pulldown
@@ -91,11 +86,9 @@ fields:
       - south of my property
       - east of my property
       - west of my property
-    default: south of my property
   - "What type of fence is it?": FenceType
     hint: e.g. A wooden fence painted white
     input type: area
-    default: a wooden fence painted white
   
 ---
 #cost of fence page, codded to ensure that it is all currency
@@ -104,26 +97,21 @@ fields:
   - Cost of Fence: FenceCost
     datatype: currency
     min: 0
-    default: 5000
   - Cost you are claiming from your neighbour: Fencecostclaiming
     datatype: currency
     min: 0
-    default: 2500
 ---
 #curly brackets is for the term definition
 question: What is the {contractor}'s name?
 fields:
   - Business Name: Fencecontractor
-    default: John Does Fences
   - Business Phone Number: ContractorNumber
-    default: '0412345123'
 
 ---
 question: What are your objections to your neighbours notice to repair the fence?
 fields:
   - Your objections: FLAC_objections
     hint: e.g. The suggested cost is too expensive, I do not approve of the contractor
-    default: The suggested cost is too expensive
     input type: area
 ---
 #for form 3
@@ -133,7 +121,6 @@ subquestion: |
 fields:
   - Your suggestions: FLAC_counter
     hint: e.g. Insert details of another contactor, suggest a different fence style
-    default: I would rather the fence be painted black.
     input type: area
     required: False
 ---
@@ -142,5 +129,4 @@ question: What is the date on the notice you received?
 fields:
   - Date: FLACnotice_date
     datatype: date
-    default: 21/10/2021
 ---
