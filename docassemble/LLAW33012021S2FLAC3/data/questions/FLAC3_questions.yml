@@ -1,14 +1,22 @@
 ---
-question: What is your name?
+include:
+  - FLAC3_endpoints.yml
+  - FLAC3_addresses.yml
+---
+#name of the user and used for both form 2 & 3
+question: What is your {full name}?
 fields:
  - Full name: FLACname
    default: Bob Klein
 ---
-question: What is your neighbours name? If your neighbour is a business, please state business name.
+#name of the user's name that they are writing the notice to
+question: What is your neighbour's name? 
+subquestion: If your neighbour is a business, please state the business name.
 fields:
  - Full name: FLACneighbourname
    default: Jane Smith
 ---
+#guides the user to the right direction, some of these options are out of FLAC3 area but at a later time can be linked to previous FLAC projects to make it cohesive and direct user to the right source
 question: What is your fencing issue?
 field: FLACformtype
 choices:
@@ -18,14 +26,18 @@ choices:
   - I have received a fencing notice from my neighbour and do not agree with it.
   - I require emergency fencing.
 ---
+#for form 3 it must be less than thirty days since receiving the notice
 question: |
   How long has it been since you have received a notice of intention from your neighbour?
+subquestion: |
+  It must be less than 30 days since you received the notice from your neighbour to then be able to respond with a Form 3 notice. If it has been longer you will be directed to the Flinders Legal Centre.
 field: FLACform3_30days
 buttons:
  - "More than 30 days": True
  - "Less than 30 days": False
 ---
-question: Does you property fit any of these three situations?
+#eligibility question to ensure the user does not have a super complicated case as these factors can change what law is applicable
+question: Does your property fit any of these three situations?
 subquestion: |
   ** Tenant:**
   
@@ -37,9 +49,10 @@ subquestion: |
   
   ** Strata Unit:** 
   
-  Most apartments, units and townhouses are Strata Units and will be have a Strata management company. If you pay Strata fees this is most likely you or please double check if you live in an apartment, unit or townhouse.
+  Most apartments, units and townhouses are Strata Units and will have a Strata management company. If you pay Strata fees this is most likely you or please double check if you live in an apartment, unit or townhouse.
 yesno: FLACelig
 ---
+#also eligibility question to ensure the user is not guided to the wrong form if it may not be applicable
 question: Did you or your neighbour cause the damage to the fence?
 field: FLACdamage
 choices:
@@ -48,61 +61,17 @@ choices:
   - No, neither at fault
 default: No, neither at fault
 ---
+#to serve a notice the user must know the neighbour or else follow steps to find out who the neighbour is and ensure it is addressed to the right person
 question: Do you know who your neighbour is?
+subquestion: |
+  It is important to know who your neighbour is to properly identify who is the owner of the neighbouring land. 
+
+  If your neighbour owns the land, then you need to contact them directly. 
+  
+  
+  If your neighbour is a tenant, then you need to contact your neighbour's landlord. 
+
 yesno: FLACneighbour
----
-question: |
-  What is your address?
-fields:
-  - Address: address.address
-    default: 123 Flinders Drive
-  - Unit: naddress.unit
-    required: False
-  - Suburb: address.city
-    default: Bedford Park
-  - State: address.state
-    default: South Australia
-    choices:
-      - South Australia
-      - New South Wales
-      - Queensland
-      - Victoria
-      - Western Australia
-      - Tasmania
-      - Australian Capital Territory
-      - Northen Territory
-    required: False
-  - Postal Code: address.postal_code
-    default: 5000
-    required: True
-
----
-question: |
-  What is your neighbour's address?
-fields:
-  - Address: naddress.address
-    default: 124 Flinders Drive
-  - Unit: naddress.unit
-    required: False
-  - Suburb: naddress.city
-    default: Bedford Park
-  - State: naddress.state
-    default: South Australia
-    choices:
-      - South Australia
-      - New South Wales
-      - Queensland
-      - Victoria
-      - Western Australia
-      - Tasmania
-      - Australian Capital Territory
-      - Northen Territory
-    required: False
-  - Postal Code: naddress.postal_code
-    default: 5000
-    required: True
-    
-
 ---
 question: Fence Information
 fields:
@@ -118,18 +87,18 @@ fields:
   - "What is the position?": FencePosition
     datatype: pulldown
     choices:
-      - back of my property
-      - middle of my property
-      - left of my property
-      - right of my property
-      - in front of my property
-    default: right of my property
+      - north of my property
+      - south of my property
+      - east of my property
+      - west of my property
+    default: south of my property
   - "What type of fence is it?": FenceType
     hint: e.g. A wooden fence painted white
     input type: area
     default: a wooden fence painted white
   
 ---
+#cost of fence page, codded to ensure that it is all currency
 question: What is the cost of the fence?
 fields:
   - Cost of Fence: FenceCost
@@ -141,61 +110,37 @@ fields:
     min: 0
     default: 2500
 ---
-question: What is the contractors name?
+#curly brackets is for the term definition
+question: What is the {contractor}'s name?
 fields:
   - Business Name: Fencecontractor
     default: John Does Fences
   - Business Phone Number: ContractorNumber
-    datatype: integer
     default: '0412345123'
 
----
-Question: What is the contractors address?
-fields:
-  - Address: baddress.address
-    default: 123 Builders Drive
-  - Unit: baddress.unit
-    required: False
-  - Suburb: baddress.city
-    default: Bedford Park
-  - State: baddress.state
-    default: South Australia
-    choices:
-      - South Australia
-      - New South Wales
-      - Queensland
-      - Victoria
-      - Western Australia
-      - Tasmania
-      - Australian Capital Territory
-      - Northen Territory
-    required: False
-  - Postal Code: baddress.postal_code
-    default: 5000
-    required: True
----
-objects:
-  - address: Address
-  - naddress: Address
-  - baddress: Address
 ---
 question: What are your objections to your neighbours notice to repair the fence?
 fields:
   - Your objections: FLAC_objections
     hint: e.g. The suggested cost is too expensive, I do not approve of the contractor
+    default: The suggested cost is too expensive
     input type: area
 ---
+#for form 3
 question: What are your counter proposals?
 subquestion: |
-   Note, you are not required to submit counter proposals. If you do not have a solution but are willing to enter into negotiations with your neighbour about this, then insert this into the field. 
+   **Note.** You are not required to submit counter proposals. If you do not have a solution but are willing to enter into negotiations with your neighbour about this, then insert this into the field. 
 fields:
   - Your suggestions: FLAC_counter
     hint: e.g. Insert details of another contactor, suggest a different fence style
+    default: I would rather the fence be painted black.
     input type: area
     required: False
 ---
-question: When did you recieve the notice?
+#date for form 3
+question: What is the date on the notice you received?
 fields:
   - Date: FLACnotice_date
     datatype: date
+    default: 21/10/2021
 ---

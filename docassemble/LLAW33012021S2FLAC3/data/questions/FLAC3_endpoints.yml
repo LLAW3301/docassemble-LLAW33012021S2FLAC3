@@ -3,90 +3,25 @@
 #other files included
 include:
 - FLAC3_questions.yml
----
-#ensures/formats the addresses correctly
-objects:
-  - address: Address
-  - naddress: Address
-  - baddress: Address
----
-#produces form 2 which creates a pdf and docx file for the user to download
-event: endpoint_1
-question: Form 2 has been created
-subquestion: |
-  Based on your responses, a Form 2 has been recommended as the best option to proceed. This is a legal form which is used to repair a fence.
-  
-  Here is a table of your results, please check to ensure all the information is right:
-
-  Information | Your Answers
-  ------------|-------------
-  Your Name|${ FLACname }   [edit](${ url_action('FLACname') })
-  Your Address|${ address }  [edit](${ url_action('address') })
-  Neighbours Name|${ FLACneighbourname }   [edit](${ url_action('FLACFLACneighbournamename') })
-  Neighbours Address|${ naddress }   [edit](${ url_action('naddress') })
-  Length and Position of proposed fence|The fence will ${ FenceLength}m long, ${ FenceHeight }m tall and at a position that is ${ FencePosition } between the properties.   [edit](${ url_action('FenceLength') })
-  Type of Fence| The type of fence is ${ FenceType } [edit](${ url_action('FenceType') })
-  Cost of Fence| $ ${ FenceCost}    [edit](${ url_action('FenceCost') })
-  Amount claiming| $ ${ Fencecostclaiming }   [edit](${ url_action('Fencecostclaiming') })
-  Name of Contractor| ${Fencecontractor} [edit](${ url_action('Fencecontractor') })
-  Phone Number of Contractor | ${ContractorNumber }   [edit](${ url_action('Fencecontractor') })
-  Address of Contractor | ${ baddress }   [edit](${ url_action('baddress') })
-  Date|${ today(format='d MMMM yyyy') }
-  
-  You can download your form below.
-
-attachment:
-  name: Form 2 Notice
-  filename: form_2
-  docx template file: FLACForm_2.docx
-  valid formats:
-    - pdf
-    - docx
-
-
-buttons: 
-  - exit: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
-  - restart: restart
 
 ---
+#formats the notice date AGLC style 
 code: |
   FLACF3notice_date = format_date(FLACnotice_date,format='d MMMM yyyy')
----
-event: endpoint_3
-question: Form 3 has been produced.
-subquestion: |
-  Based on your responses, a Form 3 has been produced for you. The purpose of the Form 3 is to act as a formal cross notice that you are able to send back to the person or business that served you the original notice. 
-  
-  Please confirm that your answers below are correct to the best of your knowledge.
-  
-  Information|Your Answers
-  ------------|-------------
-  Your Name|${ FLACname }  [edit](${ url_action('FLACname') })
-  Your Address|${ address }   [edit](${ url_action('address') })
-  Neighbours Name|${ FLACneighbourname }   [edit](${ url_action('FLACneighbourname') })
-  Neighbours Address|${ naddress }   [edit](${ url_action('naddress') })
-  Date you received the notice| ${ FLACF3notice_date}   [edit](${ url_action('FLACF3notice_date') })
-  Your objections to the notice| ${FLAC_objections}    [edit](${ url_action('FLAC_objections') })
-  %if FLAC_counter !='':
-  Your counter-proposals (if any)| ${FLAC_counter}
-  %endif
-  
-  You are now able to download the Form 3 notice below.
+  FLACF3notice_dayof = day_of(FLACnotice_date)
+  FLAC3notice_dayof_str = ''
+  if int(FLACF3notice_dayof)%10 == 1:
+    FLAC3notice_dayof_str = str(FLACF3notice_dayof) + "st"
+  elif int(FLACF3notice_dayof)%10 == 2:
+    FLAC3notice_dayof_str = str(FLACF3notice_dayof) + "nd" 
+  elif int(FLACF3notice_dayof)%10 == 3:
+    FLAC3notice_dayof_str = str(FLACF3notice_dayof) + "rd"   
+  else:
+    FLAC3notice_dayof_str = str(FLACF3notice_dayof) + "th"
+  FLACF3notice_monthof = format_date(FLACnotice_date,format='MMMM yyyy')
 
-attachment:
-  name: Form 3 Notice
-  filename: form_3
-  docx template file: FLACForm_3.docx
-  valid formats:
-    - pdf
-    - docx
-
-buttons:
-  - exit: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
-  - restart: restart
 ---
+#default screen when things are too complicated for the application
 event: endpoint_4
 question: Too Complex!
 subquestion: |
@@ -95,10 +30,11 @@ subquestion: |
   Please click the consult button below to organise an appointment with the Flinders Legal Centre for assistance on this issue. 
 
 buttons:
-  - consult: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
-  - restart: restart 
+  - Consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
+  - Restart: restart 
 ---
+#when the user caused the damage to the fence themselves
 event: endpoint_5
 question: You are unlikely to be entitled to compensation due to your damage. 
 subquestion: |
@@ -107,10 +43,11 @@ subquestion: |
   Please click the consult button below to organise an appointment with the Flinders Legal Centre for assistance on this issue.  
 
 buttons:
-  - consult: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
-  - restart: restart
+  - Consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
+  - Restart: restart
 ---
+#when the neighbour has caused the damage to the fence
 event: endpoint_6
 question: Your neighbour has caused damage. 
 subquestion: |
@@ -119,36 +56,48 @@ subquestion: |
   Based on this, we recommend that you discuss your options with the Flinders Legal Centre. 
 
 buttons:
-  - consult: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
-  - restart: restart
+  - Consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
+  - Restart: restart
 ---
 event: endpoint_7
-question: Unsure who neighbour is
+question: Unsure who the neighbour is?
 subquestion: |
   As you are not sure who the owner of the neighbouring land is, unfortunately you are unable to properly complete the next steps. 
-  
+
+  If you do not know the owner of the neighbouring land, you have the following options:
+  	
+    a)  place a notice of intention (form 2) to perform fencing work in an obvious place on the neighbouring land. If no cross-notice is serviced upon you, you may proceed with the work as if the owner agreed.
+    
+    b) you may also apply for the court to make a decision (This is called a  ‘determination’). The court may then order the cost of the fencing work to be paid by the neighbouring land owner. It is recommended to discuss this option with Flinders Legal Centre. 
+
   Please click the consult button below to organise an appointment with the Flinders Legal Centre for assistance. 
 
 buttons:
-  - consult: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
-  - restart: restart
+  - Consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
+  - Restart: restart
 ---
+#emergency fencing endpoint for when someone selects this option
 event: endpoint_8
 question: You have chosen that you require emergency fencing.
 subquestion: |
-  You have selected that you require emergency fencing.
+  You have selected that you require emergency fencing. 
  
-  Emergency fencing is addressed in section 16 of the Fencing Act which states that in the case of an emergency you are entitled to fix the fence adjoining the two properties without notice and still recover one half of the costs or the amount the adjoining owner would be liable to pay.
- 
-  However, it is important to ensure the need for a fence is an urgent matter. For example, in the incident where livestock and pets are at risk of escaping without a fence in place. This allows for reasonable steps to be taken in informing your neighbour of your desire to rectify a fence and are seeking financial contribution from them.
- 
-  For further information and clarification on your particular situation [click here](https://lsc.sa.gov.au/resources/FencesandtheLawBooklet.pdf)
-  
+  At law, this is addressed in s16 of the *Fencing Act*, which states that in case of an emergency you are entitled to repair the fence adjoining two properties without notice and still recover the amount of money that the law would establish that the adjoining owner would be liable to pay. Traditionally, this is half the cost.
+
+  However, what does constitute an emergency is not defined. 
+
+  It is important that you have considered why this situation is urgent and are able to justify this. An example of an urgent situation would be where pets or livestock were at risk of escaping without a fence.
+
+  You are able to go ahead with the repair in an urgent situation without informing your neighbour, but it is also important to take all reasonable steps to communicate with your neighbour once the fence has been repaired and inform them of what has occurred, what the next steps are and whether you plan to seek financial contributions from them.
+
+  For further information and clarification on your particular situation [click here.](https://lsc.sa.gov.au/resources/FencesandtheLawBooklet.pdf)
+
   If you wish to talk to Flinders Legal Centre then click consult to make a booking.
 
+
 buttons:
-  - consult: exit
-    url: https://www.flinderslegalcentre.net.au/dir/
-  - restart: restart
+  - Consult: exit
+    url: https://www.flinderslegalcentre.net.au/dir/home/appointments/
+  - Restart: restart
